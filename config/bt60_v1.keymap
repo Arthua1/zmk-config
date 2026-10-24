@@ -5,6 +5,8 @@
  *   0 default_layer – QWERTY
  *   1 colemak       – Colemak (włączany/wyłączany klawiszem &tog 1)
  *   2 raise         – F-klawisze, strzałki, media, Bluetooth (trzymany &mo 2)
+ *                     Fn+G = &studio_unlock (odblokowanie ZMK Studio)
+ *   3-4 extra       – puste warstwy zarezerwowane dla ZMK Studio
  *
  * Raise jest celowo NAD Colemakiem: w ZMK wygrywa warstwa o najwyższym
  * numerze, więc gdyby Colemak był wyżej, przy włączonym Colemaku
@@ -56,11 +58,22 @@
             bindings = <
   &kp GRAVE        &kp F1        &kp F2      &kp F3  &kp F4       &kp F5            &kp F6  &kp F7      &kp F8   &kp F9    &kp F10     &kp F11          &kp F12      &kp DEL
      &trans        &trans        &kp UP      &trans  &trans       &trans            &trans  &trans     &kp INS   &trans  &kp PSCRN    &kp SLCK  &kp PAUSE_BREAK   &sys_reset
-     &trans      &kp LEFT      &kp DOWN   &kp RIGHT  &trans       &trans            &trans  &trans      &trans   &trans   &kp HOME   &kp PG_UP      &bootloader
+     &trans      &kp LEFT      &kp DOWN   &kp RIGHT  &trans &studio_unlock            &trans  &trans      &trans   &trans   &kp HOME   &kp PG_UP      &bootloader
  &kp C_PREV  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_MUTE  &trans  &bootloader            &trans  &trans      &trans  &kp END  &kp PG_DN  &kp C_NEXT
                &bt BT_PRV    &bt BT_NXT      &trans  &trans       &trans            &trans  &trans  &bt BT_CLR   &trans
             >;
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        // Zapasowe warstwy do wykorzystania w ZMK Studio
+        extra1 {
+            display-name = "Extra 1";
+            status = "reserved";
+        };
+
+        extra2 {
+            display-name = "Extra 2";
+            status = "reserved";
         };
     };
 };
